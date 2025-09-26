@@ -1,0 +1,26 @@
+<div class="home-container">
+    <h1 class="brand">Psy-Talk</h1>
+    <p class="subtitle">
+        Your mind’s safe space. What’s on your mind today?
+    </p>
+    <div class="input-group">
+        <textarea [(ngModel)]="situationText" rows="5" class="situation-box"
+            placeholder="Describe your situation, emotion, or story..."></textarea>
+        <button type="button" class="mic-btn" [class.active]="recording" (click)="toggleRecording()"
+            aria-label="Start voice input">
+            <span class="material-icons" *ngIf="!recording">mic</span>
+            <span class="material-icons" *ngIf="recording">stop</span>
+        </button>
+        
+        <button *ngIf="situationText.trim()" class="clear-btn" (click)="clearText()">Clear</button>
+    </div>
+    <button [disabled]="!situationText.trim()" (click)="analyzeSituation()" class="analyze-btn">
+        Analyze
+    </button>
+    <div class="voice-hint" *ngIf="recording">
+        <span class="wave-dot"></span>
+        <span class="wave-dot"></span>
+        <span class="wave-dot"></span>
+        Listening... Speak now!
+    </div>
+</div>

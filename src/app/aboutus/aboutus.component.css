@@ -1,0 +1,82 @@
+.about-container {
+  max-width: 90%;
+  margin: 0px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 32px rgba(51, 124, 169, 0.12);
+  padding: 1px 30px 32px 30px;
+}
+
+.about-title {
+  text-shadow: 2px 2px 4px rgb(0 0 0 / 28%);
+  font-size: 2.1rem;
+  color: #337ca9;
+  font-weight: 700;
+  margin-bottom: 18px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.about-card {
+  font-size: 1.15rem;
+  color: #253a5e;
+  line-height: 1.65;
+  background: linear-gradient(90deg,#eefafe 60%, #f8fafc 100%);
+  border-radius: 14px;
+  padding: 22px 18px;
+}
+
+.features-list {
+  margin: 20px 0 18px 0;
+  padding-left: 20px;
+  color: #337ca9;
+  font-size: 1rem;
+}
+.features-list li {
+  margin-bottom: 9px;
+  font-weight: 500;
+  list-style: disc;
+}
+
+.about-quote {
+  background: #4dd2b917;
+  margin: 18px 0;
+  border-left: 4px solid #37ae95;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 1.02rem;
+  font-style: italic;
+  color: #337ca9;
+  position: relative;
+}
+.quote-mark {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4dd2b9;
+  vertical-align: -8px;
+}
+
+.about-cta {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: #469ace;
+  font-weight: 600;
+  text-align: center;
+}
+.about-contact {
+  font-size: 1rem;
+  color: #608095;
+  display: block;
+  margin-top: 6px;
+  font-weight: 400;
+}
+
+@media (max-width: 650px) {
+  .about-container {
+    max-width: 97vw;
+    padding: 14px 6vw 20px 6vw;
+  }
+  .about-title {
+    font-size: 1.4rem;
+  }
+}
