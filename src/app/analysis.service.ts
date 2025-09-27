@@ -9,7 +9,7 @@ export class AnalysisService {
 
   constructor(private http: HttpClient) {}
 
-  // Gemini API psychology analysis
+  // Gemini AI psychology analysis
   analyzeSituation(text: string) {
     const body = {
       contents: [
@@ -44,233 +44,115 @@ Input: "${text}"
     );
   }
 
-  // Local mentality advice logic
-  // getAdvicePoints(situation: string, mentality: string): string {
-  //   switch (mentality) {
-  //     case 'Gentleman':
-  //       return "**Stay classy:** Greet them with respect, keep the conversation friendly, and be polite regardless of the past.";
-  //     case 'Funny':
-  //       return "**Use humor appropriately:** Lighten up the meeting with gentle humor, but avoid sarcasm regarding the past.";
-  //     case 'Reserved':
-  //       return "**Be brief:** Greet politely, but keep your interaction short and composed.";
-  //     case 'Intelligent':
-  //       return "**Show emotional intelligence:** Acknowledge the meeting, act understanding and mature.";
-  //     case 'Broad-minded':
-  //       return "**Show growth:** Embrace the situation positively; see it as a chance to demonstrate maturity.";
-  //     case 'Revenge-oriented':
-  //       return "**Avoid negative actions:** Acting vengeful rarely leads to growth. Channel your feelings into self-improvement.";
-  //     case 'Empathetic':
-  //       return "**Be understanding:** Show compassion. Empathy helps rebuild your own mental strength.";
-  //     case 'Assertive':
-  //       return "**Stand tall:** Greet with confidence, don’t let the past cloud your present. Set clear boundaries.";
-  //     case 'Forgiving':
-  //       return "**Let go:** Be friendly, forgive sincerely, and move ahead with no grudges.";
-  //     default:
-  //       return "React authentically according to your true values and the context.";
-  //   }
-  // }
-  //   getAdvicePoints(situation: string, mentality: string): string {
-  //     switch (mentality) {
-  //       case 'Gentleman':
-  //         return `
-  // **Embody Gentleman Behavior in Social Situations**
-  // - Greet everyone with respect and kindness.
-  // - Focus on making all guests comfortable, not just any one person.
-  // - Avoid negative talk about the past; be the source of positivity.
-  // - Offer help to hosts or contribute to the group's wellbeing.
-  // - Stay calm and collected if facing unexpected or emotional interactions.
-  // - If approached, respond politely and keep conversations friendly.
-  // - Remember: Dignified actions speak louder than words.
-  //       `;
-  //       case 'Intelligent':
-  //         return `
-  // **How to embody intelligent behavior in social situations:**
-
-  // - **Prepare in advance:** Take time beforehand to reflect on your feelings and set an intention to stay calm, open-minded, and self-assured.
-  // - **Arrive with presence:** Enter confidently—smile, greet others naturally, and make polite conversation with everyone you meet.
-  // - **Engage wisely:** Participate in discussions thoughtfully. Ask good questions, listen actively, and contribute ideas that foster positive, meaningful dialogue.
-  // - **Redirect negativity:** If uncomfortable topics arise, steer the conversation gently back to neutral or uplifting subjects.
-  // - **Respect social dynamics:** Notice how others are acting; adjust your tone and responses to promote harmony—never force an interaction or over-share private details.
-  // - **Show emotional maturity:** When you feel nervous or awkward, focus on your breath, use encouraging self-talk, and remind yourself of your inner growth.
-  // - **Demonstrate composure:** Maintain good posture, use open body language, and show confidence through your actions.
-  // - **Support others:** Offer encouragement, friendliness, and help create an inclusive, supportive atmosphere.
-  // - **Exit with gratitude:** When leaving, thank the hosts or organizers, and say goodbye to those you spent time with.
-  // - **Reflect afterward:** Journal about your impressions and actions. Celebrate confident moments and note any areas for continued growth in social intelligence.
-  // `;
-
-  //       case 'Funny':
-  //         return `
-  // **Use Humor to Bring Positivity (Appropriately)**
-  // - Share light jokes or stories to include everyone, keeping humor fun and respectful.
-  // - Avoid jokes that reference sensitive history or personal struggles.
-  // - Observe others’ reactions and adjust your tone so all feel comfortable.
-  // - Laugh with—not at—others, fostering a warm, inclusive environment.
-  // - If someone is uncomfortable, switch to a more neutral topic.
-  // - Use wit to create connection and joy in every interaction.
-  //       `;
-  //       case 'Reserved':
-  //         return `
-  // **Be Reserved – Calm, Thoughtful, and Self-Controlled**
-  // - Choose your words carefully; let your actions speak.
-  // - Greet others with politeness, but avoid over-sharing or dominating conversations.
-  // - Find places to recharge if the event feels overwhelming.
-  // - Engage in meaningful dialogue only if you feel comfortable.
-  // - Respect all boundaries and focus on inner peace during interactions.
-  // - Leave when you feel ready, not pressured.
-  //       `;
-  //       case 'Broad-minded':
-  //         return `
-  // **Model Broad-Mindedness in Social Contexts**
-  // - Accept different viewpoints without judgment.
-  // - Encourage inclusive conversations and diverse perspectives.
-  // - Be open to learning from new experiences at every event.
-  // - Respect the choices and feelings of all involved.
-  // - Help mediate and resolve misunderstandings if they arise.
-  // - Leave each group with a sense of connection and openness.
-  //       `;
-  //       case 'Revenge-oriented':
-  //         return `
-  // **Channel Strong Emotions into Positive Action**
-  // - Avoid impulsive or damaging behavior—revenge rarely brings satisfaction.
-  // - Use strong feelings as motivation for self-improvement and achievement.
-  // - Maintain self-control and act in ways that reflect growth, not resentment.
-  // - Focus on building your own happiness and peace, regardless of the situation.
-  // - Practice forgiveness for your own wellbeing, even if you must set boundaries.
-  //       `;
-  //       case 'Empathetic':
-  //         return `
-  // **Show Empathy Toward Everyone Involved**
-  // - Acknowledge the emotions and perspectives of others with compassion.
-  // - Listen attentively and offer comfort if someone shares their feelings.
-  // - Be present and gentle, helping others feel understood and cared for.
-  // - Avoid judgment or advice unless asked.
-  // - Model patience, acceptance, and kindness even in tough circumstances.
-  //       `;
-  //       case 'Assertive':
-  //         return `
-  // **Demonstrate Assertiveness with Respect**
-  // - Stand tall—express your views clearly and constructively.
-  // - Set boundaries for yourself politely, without aggression.
-  // - Say “no” when needed, and maintain self-respect in all interactions.
-  // - Communicate needs and feelings openly, but kindly.
-  // - Advocate for your values or plans, and encourage dialogue.
-  //       `;
-  //       case 'Forgiving':
-  //         return `
-  // **Practice Forgiveness and Let Go**
-  // - Release grudges or emotional baggage for your own peace.
-  // - Treat all with friendliness, even if there's past conflict.
-  // - Use this event as a chance to move forward and heal.
-  // - Offer genuine well-wishes to others.
-  // - Focus on growth, closure, and building healthy future relationships.
-  //       `;
-  //       default:
-  //         return `
-  // **General Wisdom**
-  // - Act in ways authentic to your values, prioritizing wellbeing and growth.
-  // - Treat everyone with respect, openness, and care.
-  //       `;
-  //     }
-  //   }
+  // Point-wise creative advice, contextual to input and mentality
   getAdvicePoints(situation: string, mentality: string): string {
+    // Attempt to extract names and event keywords for context
+    const nameMatch = situation.match(/\b([A-Z][a-z]*)\b/g);
+    const eventMatch = /(birthday|party|function|wedding|reunion|meeting)/i.exec(situation);
+    const mainName = nameMatch?.[0] || "your friend";
+    const hostName = nameMatch?.[1] || "the host";
+    const eventName = eventMatch?.[0] || "the event";
+
     switch (mentality) {
-      case 'Gentleman':
+      case "Funny":
         return `
-**Embody Gentleman Behavior in Social Situations**
-- Greet everyone with respect and kindness.
-- Focus on making all guests comfortable, not just any one person.
-- Avoid negative talk about the past; be the source of positivity.
-- Offer help to hosts or contribute to the group's wellbeing.
-- Stay calm and collected if facing unexpected or emotional interactions.
-- If approached, respond politely and keep conversations friendly.
-- Remember: Dignified actions speak louder than words.
-      `;
-      case 'Intelligent':
+**How to bring humor when you meet ${mainName} at ${eventName}:**
+
+- Upon meeting, greet with a smile and say: "${mainName}, it’s not a ${eventName} until you arrive—${hostName}'s party vibe just doubled!"
+- When the cake is brought out, joke: "${hostName}, don’t worry, we only put half the candles this year to avoid a fire hazard!"
+- During group selfies, strike a silly pose and say: "Let’s make this the most memorable awkward group photo ever!"
+- During games, suggest a playful penalty: "Loser sings a birthday rap for ${hostName}, no escape!"
+- If anyone seems distant, break the ice with: "It’s scientifically proven that friends at birthdays are 70% happier—should we test it?"
+- End the event saying: "${hostName}, thanks for uniting legends (and chaos) under one roof—next year, more cake, less wisdom!"
+`;
+
+      case "Gentleman":
         return `
-**Display Emotional Intelligence & Wisdom in Social Gatherings**
-- Prepare yourself: Reflect and set an intention to be calm, insightful, and constructive.
-- Enter confidently, greet everyone in a warm and relaxed manner.
-- Engage thoughtfully in group conversations: ask good questions, share helpful information, and listen actively.
-- Steer the discussion toward positive, meaningful topics if negativity arises.
-- Respect everyone's boundaries; match your engagement to the mood around you.
-- Use emotional self-regulation techniques: breathe deeply, practice positive self-talk, and notice your thoughts.
-- Maintain open body language and good posture—show confidence through presence.
-- Support others: help bring people together, encourage healthy connections.
-- Exit graciously, thank the hosts, and leave a positive impression.
-- Journal afterward about what felt intelligent and what you might improve next time.
-      `;
-      case 'Funny':
+**Tips for Gentleman Behavior at ${eventName}:**
+
+- Dress neatly for ${hostName}'s ${eventName}; offer help if you see setup tasks.
+- Greet ${mainName} first with: "Hi ${mainName}, great to see you!"
+- Compliment ${hostName}: "${hostName}, you always make everyone feel special at your parties."
+- Hold the door or help serve snacks if needed.
+- If the conversation gets tough, steer it back kindly: "Let’s focus on celebrating ${hostName} tonight!"
+- Before leaving: "Thank you, ${hostName}, for a wonderful evening—looking forward to our next get-together."
+`;
+
+      case "Intelligent":
         return `
-**Use Humor to Bring Positivity (Appropriately)**
-- Share light jokes or stories to include everyone, keeping humor fun and respectful.
-- Avoid jokes that reference sensitive history or personal struggles.
-- Observe others’ reactions and adjust your tone so all feel comfortable.
-- Laugh with—not at—others, fostering a warm, inclusive environment.
-- If someone is uncomfortable, switch to a more neutral topic.
-- Use wit to create connection and joy in every interaction.
-      `;
-      case 'Reserved':
+**Intelligent Ways to Navigate ${hostName}'s ${eventName}:**
+
+- Break the ice with: "Any predictions for what fun drama will happen tonight?"
+- In a group, introduce thoughtful games: "What's the best lesson you learned this year, ${hostName}?"
+- Ask ${mainName}: "Did you try the new cake? I read desserts are scientifically proven mood boosters!"
+- Diffuse tense moments: "Let's share one positive thing about today."
+- After the party, jot down: "How did I help make the event a great experience for all?"
+`;
+
+      case "Reserved":
         return `
-**Be Reserved – Calm, Thoughtful, and Self-Controlled**
-- Choose your words carefully; let your actions speak.
-- Greet others with politeness, but avoid over-sharing or dominating conversations.
-- Find places to recharge if the event feels overwhelming.
-- Engage in meaningful dialogue only if you feel comfortable.
-- Respect all boundaries and focus on inner peace during interactions.
-- Leave when you feel ready, not pressured.
-      `;
-      case 'Broad-minded':
+**Reserved but Friendly at ${eventName}:**
+
+- Send ${hostName} a birthday wish on arrival, keep conversation brief.
+- Find a cozy spot and enjoy watching the festivities quietly.
+- If approached by ${mainName}, say: "Just happy to be here and see everyone celebrating."
+- Join games only if you feel like it—it’s okay to observe.
+- As you leave, thank ${hostName}: "Thanks ${hostName}, I had a nice time."
+`;
+
+      case "Broad-minded":
         return `
-**Model Broad-Mindedness in Social Contexts**
-- Accept different viewpoints without judgment.
-- Encourage inclusive conversations and diverse perspectives.
-- Be open to learning from new experiences at every event.
-- Respect the choices and feelings of all involved.
-- Help mediate and resolve misunderstandings if they arise.
-- Leave each group with a sense of connection and openness.
-      `;
-      case 'Revenge-oriented':
+**Broad-minded Moves for ${eventName}:**
+
+- Invite someone new into your group: "Hey, have you met ${mainName} yet?"
+- Ask ${hostName}: "What's the most unusual tradition you've seen at a birthday?"
+- Try different food/games: "This cake decorating contest is wild!"
+- If friends disagree: "Parties are for celebrating differences too!"
+`;
+
+      case "Revenge-oriented":
         return `
-**Channel Strong Emotions into Positive Action**
-- Avoid impulsive or damaging behavior—revenge rarely brings satisfaction.
-- Use strong feelings as motivation for self-improvement and achievement.
-- Maintain self-control and act in ways that reflect growth, not resentment.
-- Focus on building your own happiness and peace, regardless of the situation.
-- Practice forgiveness for your own wellbeing, even if you must set boundaries.
-      `;
-      case 'Empathetic':
+**Channel Strong Feelings Without Conflict:**
+
+- If you feel upset, use humor or actions to stand out positively: "Next time, challenge us to a bake-off, not drama-off!"
+- Focus on winning games or complimenting ${hostName}.
+- Ignore provocations; instead, say "${hostName}, awesome job today—you deserve all the cake!"
+`;
+
+      case "Empathetic":
         return `
-**Show Empathy Toward Everyone Involved**
-- Acknowledge the emotions and perspectives of others with compassion.
-- Listen attentively and offer comfort if someone shares their feelings.
-- Be present and gentle, helping others feel understood and cared for.
-- Avoid judgment or advice unless asked.
-- Model patience, acceptance, and kindness even in tough circumstances.
-      `;
-      case 'Assertive':
+**Empathetic Actions at ${eventName}:**
+
+- Notice if anyone (including ${mainName}) seems left out: "Join us for this game, it's more fun together!"
+- If a friend shares worries: "I get it, birthdays bring up all sorts of feelings."
+- Thank ${hostName}: "You make everyone feel welcome tonight."
+`;
+
+      case "Assertive":
         return `
-**Demonstrate Assertiveness with Respect**
-- Stand tall—express your views clearly and constructively.
-- Set boundaries for yourself politely, without aggression.
-- Say “no” when needed, and maintain self-respect in all interactions.
-- Communicate needs and feelings openly, but kindly.
-- Advocate for your values or plans, and encourage dialogue.
-      `;
-      case 'Forgiving':
+**How to be Assertive at ${eventName}:**
+
+- State your game preference: "Let's start with karaoke, I've been practicing for this!"
+- If conversation makes you uncomfortable: "Can we switch topics?"
+- Ensure your ideas for activities are heard.
+- If leaving early: "I've had a great time. Thanks for the invite, ${hostName}!"
+`;
+
+      case "Forgiving":
         return `
-**Practice Forgiveness and Let Go**
-- Release grudges or emotional baggage for your own peace.
-- Treat all with friendliness, even if there's past conflict.
-- Use this event as a chance to move forward and heal.
-- Offer genuine well-wishes to others.
-- Focus on growth, closure, and building healthy future relationships.
-      `;
+**Forgiveness in Action at ${eventName}:**
+
+- If you see ${mainName} after a disagreement: "Good to see you, hope you enjoy the party."
+- Join fun activities to make new memories, not dwell on the past.
+- End the evening: "${hostName}, this party was awesome—here's to more laughter and no regrets!"
+`;
+
       default:
         return `
-**General Wisdom**
+**General Wisdom at ${eventName}:**
 - Act in ways authentic to your values, prioritizing wellbeing and growth.
 - Treat everyone with respect, openness, and care.
-      `;
+`;
     }
   }
 }

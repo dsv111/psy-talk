@@ -43,6 +43,7 @@
 .input-text {
   color: #253a5e;
   margin-top: 5px;
+  font-family: 'system-ui', Arial, sans-serif;
 }
 
 .loading-spinner {

@@ -4,19 +4,35 @@ import { AnalysisService } from '../analysis.service';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { marked } from 'marked';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-analysis',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './analysis.component.html',
-  styleUrls: ['./analysis.component.css'],
+  styleUrls: ['./analysis.component.css']
 })
 export class AnalysisComponent {
   input: string = '';
   loading = true;
   analysisResult: any = null;
   errorMsg: string = '';
+
+  futureSituationText = '';
+  futureAdvice: SafeHtml | null = null;
+  selectedMentality: any = null;
+  mentalities = [
+    { name: 'Gentleman', icon: '🤵' },
+    { name: 'Funny', icon: '😂' },
+    { name: 'Reserved', icon: '😶' },
+    { name: 'Intelligent', icon: '🧠' },
+    { name: 'Broad-minded', icon: '🌐' },
+    { name: 'Revenge-oriented', icon: '😡' },
+    { name: 'Empathetic', icon: '❤️' },
+    { name: 'Assertive', icon: '💪' },
+    { name: 'Forgiving', icon: '🙏' }
+  ];
 
   constructor(
     private router: Router,
@@ -43,14 +59,34 @@ export class AnalysisComponent {
       error: () => {
         this.loading = false;
         this.errorMsg = 'Failed to analyze. Try again later.';
-      },
+      }
     });
   }
 
-  // This function transforms markdown into HTML and marks it safe for Angular rendering
   getSuggestionHtml(suggestion: string): SafeHtml {
-    // Marked 5.x synchronous option
-    const html = marked.parse(suggestion, { async: false }) as string;
+    const html = marked.parseInline(suggestion, { async: false }) as string;
     return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+
+  selectMentality(type: any) {
+    this.selectedMentality = type;
+  }
+
+  analyzeFutureSituation() {
+    const advice = this.analysis.getAdvicePoints(
+      this.futureSituationText,
+      this.selectedMentality?.name
+    );
+    this.futureAdvice = this.sanitizer.bypassSecurityTrustHtml(
+      marked.parse(advice, { async: false }) as string
+    );
+  }
+
+  // Dynamic placeholder matches previous question
+  get dynamicPlaceholder(): string {
+    if (this.input && this.input.length > 0) {
+      return `Imagine a future situation related to: "${this.input.slice(0, 35)}..."`;
+    }
+    return "Describe a future scenario relevant to your situation (e.g., facing a similar challenge again...)";
   }
 }
