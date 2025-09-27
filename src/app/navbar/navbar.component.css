@@ -8,27 +8,49 @@
     position: relative;
     
 }
-
 .logo {
-    text-shadow: 2px 2px 4px rgb(0 0 0 / 28%);
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  gap: 8px;        /* space between logo and logoname/tagline */
+  text-shadow: 2px 2px 4px rgb(0 0 0 / 28%);
+}
+
+.logo img {
+  display: block;
+  border-radius: 50%;
+  /* max-width: 60px; */
+  max-height: 60px;
+  height: auto;
+  width: 70px;
+  object-fit: contain;
+  margin: 0;
+}
+
+.brand-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .brand {
-    font-family: 'Poppins', Arial, sans-serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #f9fafc;
-    letter-spacing: 2px;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f9fafc;
+  letter-spacing: 2px;
+  line-height: 1.1;
+  margin-bottom: 2px;  /* space between brand and tagline */
 }
 
 .tagline {
-    font-size: 0.8rem;
-    color: #eef8fc;
-    font-weight: 400;
-    letter-spacing: 1px;
-    margin-top: 2px;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: white;
+  line-height: 1.1;
+  word-break: break-word;
+  max-width: 180px; /* adjust as needed */
+  white-space: normal;
 }
 
 /* Hamburger */
@@ -138,11 +160,10 @@
 }
 
 @media (max-width: 480px) {
-    .brand {
-        font-size: 1.25rem;
-    }
-
-    .tagline {
-        font-size: 0.75rem;
-    }
+  .brand {
+    font-size: 1.25rem;
+  }
+  .tagline {
+    font-size: 0.75rem;
+  }
 }

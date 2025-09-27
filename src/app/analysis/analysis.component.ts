@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnalysisService } from '../analysis.service';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { marked } from 'marked';
 
 @Component({
   selector: 'app-analysis',
   standalone: true,
-  imports: [CommonModule], // Only standalone components/pipes/directives here!
+  imports: [CommonModule],
   templateUrl: './analysis.component.html',
-  styleUrls: ['./analysis.component.css']
+  styleUrls: ['./analysis.component.css'],
 })
 export class AnalysisComponent {
   input: string = '';
@@ -18,10 +20,10 @@ export class AnalysisComponent {
 
   constructor(
     private router: Router,
-    private analysis: AnalysisService
+    private analysis: AnalysisService,
+    private sanitizer: DomSanitizer
   ) {
     const nav = this.router.getCurrentNavigation();
-    // Use optional chaining and property access for router state
     this.input = nav?.extras.state?.['input'] || '';
     if (this.input) {
       this.analyze(this.input);
@@ -41,7 +43,14 @@ export class AnalysisComponent {
       error: () => {
         this.loading = false;
         this.errorMsg = 'Failed to analyze. Try again later.';
-      }
+      },
     });
+  }
+
+  // This function transforms markdown into HTML and marks it safe for Angular rendering
+  getSuggestionHtml(suggestion: string): SafeHtml {
+    // Marked 5.x synchronous option
+    const html = marked.parse(suggestion, { async: false }) as string;
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 }

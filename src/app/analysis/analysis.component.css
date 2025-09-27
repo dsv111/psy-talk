@@ -120,7 +120,7 @@ h3 {
   letter-spacing: 1px;
   box-shadow: 0 1px 4px #4dd2b925;
 }
-.summary, .example-scenario, .psychology-insight {
+.summary {
   font-size: 1.04rem;
   color: #253a5e;
   background: #e4f9f5;
@@ -136,6 +136,67 @@ h3 {
 .suggestion-list li {
   margin-bottom: 8px;
 }
+
+.example-block {
+  background: #fffbe7;
+  border-left: 5px solid #fbc02d;
+  padding: 13px 18px 13px 18px;
+  border-radius: 12px;
+  margin-top: 9px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px #fbc02d1f;
+}
+.example-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: #e6a912;
+  margin-bottom: 5px;
+  font-size: 1.05rem;
+}
+.example-icon {
+  width: 22px;
+  height: 22px;
+}
+.example-text {
+  color: #463306;
+  font-size: 1.08rem;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+  margin-top: 2px;
+  padding-left: 4px;
+}
+
+.insight-block {
+  background: #e8fcfb;
+  border-left: 5px solid #4dd2b9;
+  box-shadow: 0 2px 8px #4dd2b91f;
+  padding: 13px 18px 13px 18px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+.insight-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: #25b47a;
+  margin-bottom: 5px;
+  font-size: 1.05rem;
+}
+.insight-icon {
+  width: 22px;
+  height: 22px;
+}
+.insight-text {
+  color: #196857;
+  font-size: 1.08rem;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+  padding-left: 4px;
+}
+
 .positive-section {
   background: #e0fffa;
   padding: 13px 18px;

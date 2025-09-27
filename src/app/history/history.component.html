@@ -1,0 +1,11 @@
+<div class="history-container" *ngIf="history$ as history">
+  <h2>Previous Analyses</h2>
+  <div *ngFor="let item of history">
+    <div class="history-card">
+      <div class="input-text">{{ item.input }}</div>
+      <small>{{ item.timestamp | date:'short' }}</small>
+      <div class="result">{{ item.result | json }}</div>
+    </div>
+  </div>
+  <button (click)="historyService.clearHistory()">Clear All</button>
+</div>

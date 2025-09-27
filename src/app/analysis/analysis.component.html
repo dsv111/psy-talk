@@ -1,22 +1,75 @@
 <div class="analysis-container">
-  <h2>AI Analysis</h2>
-  <div class="user-input">
-    <b>Your input:</b> <div class="input-text">{{ input }}</div>
+  <div class="analysis-header">
+    <img src="https://cdn-icons-png.flaticon.com/128/2725/2725688.png" alt="AI Mascot" class="analysis-ai-img">
+    <h2>Psy-Talk Analysis Result</h2>
   </div>
-  <div *ngIf="loading" class="loading-spinner">Analyzing...</div>
-  <div *ngIf="errorMsg">{{ errorMsg }}</div>
-  <div *ngIf="!loading && analysisResult">
-    <h3>Main Emotions:</h3>
-    <ul class="emotion-tags">
-      <li *ngFor="let emotion of analysisResult.emotions">{{ emotion }}</li>
-    </ul>
-    <div class="summary">{{ analysisResult.summary }}</div>
-    <h3>AI Suggestions:</h3>
-    <ul class="suggestion-list">
-      <li *ngFor="let suggestion of analysisResult.suggestions">{{ suggestion }}</li>
-    </ul>
-    <div *ngIf="analysisResult.example"><b>Example:</b> {{ analysisResult.example }}</div>
-    <div *ngIf="analysisResult.psychology"><b>Insight:</b> {{ analysisResult.psychology }}</div>
-    <div class="positive">{{ analysisResult.positive }}</div>
+
+  <div class="user-input">
+    <span class="input-label">Your Question:</span>
+    <div class="input-text">{{ input }}</div>
+  </div>
+
+  <div *ngIf="loading" class="loading-spinner">
+    <span class="loader"></span> Analyzing your feelings...
+  </div>
+  <div *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</div>
+
+  <div class="analysis-result" *ngIf="!loading && analysisResult">
+    <div class="section">
+      <h3>
+        <img src="https://cdn-icons-png.flaticon.com/128/3903/3903570.png" class="section-icon" alt="Emotions">
+        Main Emotions
+      </h3>
+      <ul class="emotion-tags">
+        <li *ngFor="let emotion of analysisResult.emotions">{{ emotion }}</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>
+        <img src="https://cdn-icons-png.flaticon.com/128/1086/1086741.png" class="section-icon" alt="Summary">
+        Situation Summary
+      </h3>
+      <div class="summary">{{ analysisResult.summary }}</div>
+    </div>
+
+    <div class="section">
+      <h3>
+        <img src="https://cdn-icons-png.flaticon.com/128/3132/3132084.png" class="section-icon" alt="Suggestions">
+        AI Suggestions
+      </h3>
+      <ul class="suggestion-list">
+        <li *ngFor="let suggestion of analysisResult.suggestions" [innerHTML]="getSuggestionHtml(suggestion)"></li>
+      </ul>
+    </div>
+
+    <div class="section" *ngIf="analysisResult.example">
+      <div class="example-block">
+        <div class="example-header">
+          <img src="https://cdn-icons-png.flaticon.com/128/1512/1512584.png" class="example-icon" alt="Example">
+          <span>🖥️ Example:</span>
+        </div>
+        <div class="example-text">
+          {{ analysisResult.example }}
+        </div>
+      </div>
+    </div>
+    <div class="section" *ngIf="analysisResult.psychology">
+      <div class="insight-block">
+        <div class="insight-header">
+          <img src="https://cdn-icons-png.flaticon.com/128/1682/1682908.png" class="insight-icon" alt="Insight">
+          <span>💡 Insight:</span>
+        </div>
+        <div class="insight-text">
+          {{ analysisResult.psychology }}
+        </div>
+      </div>
+    </div>
+    <div class="section positive-section" *ngIf="analysisResult.positive">
+      <span class="positive-msg">
+        <img src="https://cdn-icons-png.flaticon.com/128/1055/1055687.png" class="positive-icon" alt="Positive">
+        {{ analysisResult.positive }}
+      </span>
+    </div>
   </div>
 </div>
