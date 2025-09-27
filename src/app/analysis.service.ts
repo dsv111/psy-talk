@@ -9,7 +9,6 @@ export class AnalysisService {
 
   constructor(private http: HttpClient) {}
 
-  // Gemini AI psychology analysis
   analyzeSituation(text: string) {
     const body = {
       contents: [
@@ -44,115 +43,113 @@ Input: "${text}"
     );
   }
 
-  // Point-wise creative advice, contextual to input and mentality
   getAdvicePoints(situation: string, mentality: string): string {
-    // Attempt to extract names and event keywords for context
-    const nameMatch = situation.match(/\b([A-Z][a-z]*)\b/g);
-    const eventMatch = /(birthday|party|function|wedding|reunion|meeting)/i.exec(situation);
-    const mainName = nameMatch?.[0] || "your friend";
-    const hostName = nameMatch?.[1] || "the host";
-    const eventName = eventMatch?.[0] || "the event";
+    // Extract notable words for more relatable suggestions
+    const extractEntities = (str: string) => {
+      const matches = str.match(/\b[A-Z][a-z]*\b/g) || [];
+      // Only use the first match as mainEntity for clarity
+      return matches.length ? matches[0] : null;
+    };
+    const mainEntity = extractEntities(situation) || "the other person";
+    // Contextual fallback for the event/meeting
+    const eventOrMeeting =
+      /(meeting|event|function|gathering|discussion|interaction|occasion)/i.exec(
+        situation
+      )?.[0] || "the situation";
 
     switch (mentality) {
       case "Funny":
         return `
-**How to bring humor when you meet ${mainName} at ${eventName}:**
-
-- Upon meeting, greet with a smile and say: "${mainName}, it’s not a ${eventName} until you arrive—${hostName}'s party vibe just doubled!"
-- When the cake is brought out, joke: "${hostName}, don’t worry, we only put half the candles this year to avoid a fire hazard!"
-- During group selfies, strike a silly pose and say: "Let’s make this the most memorable awkward group photo ever!"
-- During games, suggest a playful penalty: "Loser sings a birthday rap for ${hostName}, no escape!"
-- If anyone seems distant, break the ice with: "It’s scientifically proven that friends at birthdays are 70% happier—should we test it?"
-- End the event saying: "${hostName}, thanks for uniting legends (and chaos) under one roof—next year, more cake, less wisdom!"
-`;
+**How to Add Humor in ${eventOrMeeting}:**
+- Start with a genuine smile and perhaps a light-hearted comment open to all.
+- If someone seems tense, try a situational pun, e.g., "I think ${eventOrMeeting} just got 30% brighter!"
+- Use body language: playful hand gestures or animated expressions to bring positivity.
+- Suggest an activity or brief game to lighten the mood.
+- Make gentle, universal jokes (nothing personal or sensitive) to break the ice.
+- End by inviting others to share their funniest recent story—it shows you're approachable and fun.
+        `;
 
       case "Gentleman":
         return `
-**Tips for Gentleman Behavior at ${eventName}:**
-
-- Dress neatly for ${hostName}'s ${eventName}; offer help if you see setup tasks.
-- Greet ${mainName} first with: "Hi ${mainName}, great to see you!"
-- Compliment ${hostName}: "${hostName}, you always make everyone feel special at your parties."
-- Hold the door or help serve snacks if needed.
-- If the conversation gets tough, steer it back kindly: "Let’s focus on celebrating ${hostName} tonight!"
-- Before leaving: "Thank you, ${hostName}, for a wonderful evening—looking forward to our next get-together."
-`;
+**Gentleman Approach in ${eventOrMeeting}:**
+- Greet ${mainEntity} and others respectfully, with confident posture.
+- Offer assistance if someone looks like they need help (e.g. with directions or tasks).
+- If the atmosphere gets intense, gently steer the conversation to positive or common ground.
+- Compliment others for their organization, ideas, or contributions.
+- Thank everyone sincerely for their time or company before leaving.
+        `;
 
       case "Intelligent":
         return `
-**Intelligent Ways to Navigate ${hostName}'s ${eventName}:**
-
-- Break the ice with: "Any predictions for what fun drama will happen tonight?"
-- In a group, introduce thoughtful games: "What's the best lesson you learned this year, ${hostName}?"
-- Ask ${mainName}: "Did you try the new cake? I read desserts are scientifically proven mood boosters!"
-- Diffuse tense moments: "Let's share one positive thing about today."
-- After the party, jot down: "How did I help make the event a great experience for all?"
-`;
+**Intelligent Strategies for ${eventOrMeeting}:**
+- Observe first; contribute to discussions thoughtfully, referencing anything relevant from the situation.
+- Ask thought-provoking, open-ended questions on the topic at hand.
+- Offer a gentle insight if an awkward moment occurs, e.g., "It's always valuable to hear many perspectives."
+- Use calm, precise gestures, and make eye contact to show engagement.
+- Afterward, reflect on two smart moves you made, or new things you learned about the people/process.
+        `;
 
       case "Reserved":
         return `
-**Reserved but Friendly at ${eventName}:**
-
-- Send ${hostName} a birthday wish on arrival, keep conversation brief.
-- Find a cozy spot and enjoy watching the festivities quietly.
-- If approached by ${mainName}, say: "Just happy to be here and see everyone celebrating."
-- Join games only if you feel like it—it’s okay to observe.
-- As you leave, thank ${hostName}: "Thanks ${hostName}, I had a nice time."
-`;
+**Reserved But Present in ${eventOrMeeting}:**
+- Enter quietly, choosing a spot where you can observe most of the group.
+- Listen actively, nodding or smiling to show engagement.
+- Speak briefly and only when comfortable—let others lead conversations.
+- If someone approaches, acknowledge warmly but don't feel pressured to over-share.
+- If you need a break, excuse yourself calmly and return if you feel ready.
+        `;
 
       case "Broad-minded":
         return `
-**Broad-minded Moves for ${eventName}:**
-
-- Invite someone new into your group: "Hey, have you met ${mainName} yet?"
-- Ask ${hostName}: "What's the most unusual tradition you've seen at a birthday?"
-- Try different food/games: "This cake decorating contest is wild!"
-- If friends disagree: "Parties are for celebrating differences too!"
-`;
+**Broad-minded Presence in ${eventOrMeeting}:**
+- Initiate inclusive conversations, inviting quieter members to share their thoughts.
+- Express openness: "I'm curious to hear your experience on this."
+- If a disagreement arises, say, "I appreciate different perspectives, it makes this richer."
+- Try something new if the opportunity comes up—modeling flexible thinking for others.
+        `;
 
       case "Revenge-oriented":
         return `
-**Channel Strong Feelings Without Conflict:**
-
-- If you feel upset, use humor or actions to stand out positively: "Next time, challenge us to a bake-off, not drama-off!"
-- Focus on winning games or complimenting ${hostName}.
-- Ignore provocations; instead, say "${hostName}, awesome job today—you deserve all the cake!"
-`;
+**Transforming Strong Feelings in ${eventOrMeeting}:**
+- Channel intense emotion into constructive action, like excelling at a given task or assisting someone.
+- Maintain composure—keep body language open and unfazed.
+- If provoked, respond neutrally and re-focus energy on your own goals.
+- Use your presence to set an example of resilience, rather than reaction.
+        `;
 
       case "Empathetic":
         return `
-**Empathetic Actions at ${eventName}:**
-
-- Notice if anyone (including ${mainName}) seems left out: "Join us for this game, it's more fun together!"
-- If a friend shares worries: "I get it, birthdays bring up all sorts of feelings."
-- Thank ${hostName}: "You make everyone feel welcome tonight."
-`;
+**Empathetic Moves in ${eventOrMeeting}:**
+- Notice body language; if someone looks uncomfortable, check in: "Are you okay with everything here?"
+- Acknowledge and validate group feelings: "It's normal to feel a bit tense sometimes."
+- Offer supportive nonverbal cues—a nod, gentle smile, or encouraging gesture.
+- If needed, be a calm mediator and help resolve misunderstandings gently.
+        `;
 
       case "Assertive":
         return `
-**How to be Assertive at ${eventName}:**
-
-- State your game preference: "Let's start with karaoke, I've been practicing for this!"
-- If conversation makes you uncomfortable: "Can we switch topics?"
-- Ensure your ideas for activities are heard.
-- If leaving early: "I've had a great time. Thanks for the invite, ${hostName}!"
-`;
+**Assertive Practices for ${eventOrMeeting}:**
+- State your needs or opinions clearly and respectfully: "I think we could try this approach."
+- Maintain confident body posture (upright, open arms).
+- If interrupted, calmly say, "Let me finish, then I'd love your thoughts."
+- Set boundaries if the situation turns uncomfortable, using firm but kind language.
+        `;
 
       case "Forgiving":
         return `
-**Forgiveness in Action at ${eventName}:**
-
-- If you see ${mainName} after a disagreement: "Good to see you, hope you enjoy the party."
-- Join fun activities to make new memories, not dwell on the past.
-- End the evening: "${hostName}, this party was awesome—here's to more laughter and no regrets!"
-`;
+**Forgiveness in Action During ${eventOrMeeting}:**
+- Greet everyone openly, even if past tensions exist.
+- If a misunderstanding resurfaces, say, "I’d rather focus on moving forward today."
+- Join group activities to show willingness to participate equally.
+- Express genuine goodwill as the meeting ends: "I'm glad we could all come together."
+        `;
 
       default:
         return `
-**General Wisdom at ${eventName}:**
-- Act in ways authentic to your values, prioritizing wellbeing and growth.
-- Treat everyone with respect, openness, and care.
-`;
+**General Steps for ${eventOrMeeting}:**
+- Be present, listen, and interact in ways that match your values.
+- Treat all participants with respect and openness.
+        `;
     }
   }
 }
