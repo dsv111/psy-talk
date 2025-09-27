@@ -1,0 +1,22 @@
+<div class="analysis-container">
+  <h2>AI Analysis</h2>
+  <div class="user-input">
+    <b>Your input:</b> <div class="input-text">{{ input }}</div>
+  </div>
+  <div *ngIf="loading" class="loading-spinner">Analyzing...</div>
+  <div *ngIf="errorMsg">{{ errorMsg }}</div>
+  <div *ngIf="!loading && analysisResult">
+    <h3>Main Emotions:</h3>
+    <ul class="emotion-tags">
+      <li *ngFor="let emotion of analysisResult.emotions">{{ emotion }}</li>
+    </ul>
+    <div class="summary">{{ analysisResult.summary }}</div>
+    <h3>AI Suggestions:</h3>
+    <ul class="suggestion-list">
+      <li *ngFor="let suggestion of analysisResult.suggestions">{{ suggestion }}</li>
+    </ul>
+    <div *ngIf="analysisResult.example"><b>Example:</b> {{ analysisResult.example }}</div>
+    <div *ngIf="analysisResult.psychology"><b>Insight:</b> {{ analysisResult.psychology }}</div>
+    <div class="positive">{{ analysisResult.positive }}</div>
+  </div>
+</div>
