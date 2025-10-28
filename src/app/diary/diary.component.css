@@ -1,0 +1,152 @@
+.diary-container {
+  background: #f9f6f2;
+  width: 800px;
+  min-height: 700px;
+  box-shadow: 0 0 13px rgba(0, 0, 0, 0.25);
+  margin: 36px auto;
+  position: relative;
+  border-radius: 8px;
+  display: flex;
+}
+
+.diary-binding {
+  width: 32px;
+  background: repeating-linear-gradient(to bottom, #ccc 0 4px, transparent 4px 20px);
+  border-radius: 16px 0 0 16px;
+  margin-right: -16px;
+}
+
+.diary-page {
+  flex: 1;
+  padding: 32px 36px 36px 40px;
+  background: repeating-linear-gradient(#fff 0 30px, #ecd 31px 32px);
+  border-radius: 0 8px 8px 0;
+}
+
+.diary-date {
+  font-family: 'Caveat', cursive;
+  font-size: 1.8em;
+  margin-bottom: 12px;
+}
+
+.diary-entry {
+  width: 100%;
+  min-height: 350px;
+  font-family: "Indie Flower", cursive;
+  font-size: 1.1em;
+  background: none;
+  border: none;
+  resize: none;
+  outline: none;
+  padding: 14px 0px 0px 0px;
+  color: #222;
+  line-height: 2;
+}
+
+.media-section label {
+  display: block;
+  margin-top: 30px;
+}
+
+.diary-container {
+  max-width: 80%;
+  margin: 0 auto 30px auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(51, 124, 169, 0.11);
+  padding: 23px;
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+.diary-form textarea {
+  width: 98%;
+  border-radius: 8px;
+  border: 1.4px solid #4dd2b9;
+  padding: 9px;
+  font-size: 1rem;
+  margin-bottom: 9px;
+  resize: vertical;
+}
+
+.mood-row {
+  margin: 50px 0;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.mood-row button {
+  border: none;
+  background: #eaf3fa;
+  padding: 4px 13px;
+  border-radius: 13px;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.mood-row button.selected {
+  background: #4dd2b9;
+  color: #fff;
+}
+
+.save-btn {
+  background: #337ca9;
+  color: #fff;
+  border-radius: 13px;
+  border: none;
+  padding: 9px 27px;
+  font-size: 1.11rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.diary-entries {
+  margin-top: 27px;
+}
+
+.entry-card {
+  background: #f7fafd;
+  border-radius: 10px;
+  margin-bottom: 13px;
+  padding: 13px 17px 10px 12px;
+  box-shadow: 0 1px 8px #bed6e32a;
+  position: relative;
+}
+
+.entry-date {
+  color: #337ca9;
+  font-weight: 500;
+  font-size: 0.98rem;
+}
+
+.entry-mood {
+  font-size: 1.35rem;
+  margin-left: 6px;
+}
+
+.entry-text {
+  margin-top: 7px;
+  font-size: 1.05rem;
+  color: #253a5e;
+  margin-bottom: 8px;
+}
+
+.delete-btn {
+  position: absolute;
+  right: 15px;
+  top: 17px;
+  background: #e63946;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 3px 10px;
+  font-size: 0.94rem;
+  cursor: pointer;
+}
+
+.empty-msg {
+  color: #999;
+  margin-top: 25px;
+  text-align: center;
+}
