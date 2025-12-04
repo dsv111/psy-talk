@@ -4,6 +4,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { AnalysisComponent } from './analysis/analysis.component';
 import { HistoryComponent } from './history/history.component';
 import { DiaryComponent } from './diary/diary.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -11,5 +12,6 @@ export const routes: Routes = [
   { path: 'analysis', component: AnalysisComponent },
   { path: 'history', component: HistoryComponent },
   { path: 'diary', component: DiaryComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: '**', redirectTo: '' },
 ];

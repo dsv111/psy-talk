@@ -1,0 +1,18 @@
+<div class="fedex-accordion-item">
+  
+  <!-- Accordion Header -->
+  <div class="fedex-accordion-header" (click)="toggle()">
+    <div class="title">{{ title }}</div>
+
+    <div class="icon">
+      <span *ngIf="open">▲</span>
+      <span *ngIf="!open">▼</span>
+    </div>
+  </div>
+
+  <!-- Accordion Body -->
+  <div class="fedex-accordion-body" [class.open]="open">
+    <ng-content></ng-content>
+  </div>
+
+</div>

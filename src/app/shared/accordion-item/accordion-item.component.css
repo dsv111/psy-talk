@@ -1,0 +1,19 @@
+.fedex-accordion-header {
+  padding: 12px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  background: #f7f7f7;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fedex-accordion-body {
+  border: 1px solid #ddd;
+  border-top: none;
+  padding: 15px;
+  display: none;
+}
+
+.fedex-accordion-body.open {
+  display: block;
+}

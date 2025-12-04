@@ -1,0 +1,71 @@
+/* src/app/dashboard/dashboard.component.css */
+
+/* --- Page Layout (Main form and Sidebar) --- */
+.fdx-quote-page-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr; /* Main Content (Parts) | Sidebar */
+  gap: 30px;
+  padding: 20px;
+}
+
+.fdx-sidebar {
+  padding-top: 50px;
+  /* Ensure the sidebar card is sticky or styled correctly */
+}
+
+/* --- Form Layout (Inside Accordion Item) --- */
+
+/* Basic container for any row of form groups */
+.fdx-form-row {
+  margin-bottom: 20px; /* Space between rows */
+  width: 100%;
+}
+
+/* Rule for three-column layout (used for Stand Type, Weight, and SN/PN/PO) */
+.fdx-three-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+  gap: 20px;
+}
+
+/* Rule for single-column layout (used for Engine Model and Instruction) */
+.fdx-single-col {
+  display: block; /* Default block behavior for single column */
+}
+
+/* Style for combining input and unit dropdown (e.g., Actual Weight) */
+.fdx-input-with-unit-group {
+  display: flex;
+  gap: 5px;
+}
+
+.fdx-input-with-unit-group .fdx-input-field {
+  flex-grow: 1; /* Input takes up available space */
+}
+
+.fdx-input-with-unit-group .fdx-unit-select {
+  width: 70px; /* Fixed width for the unit dropdown (kg/cm) */
+  flex-shrink: 0;
+}
+
+/* Ensure all form elements take full width of their containing group */
+.fdx-input-field,
+.fdx-dropdown,
+.fdx-text-area {
+  width: 100%;
+  box-sizing: border-box; /* Include padding/border in the element's total width */
+  margin-top: 5px; /* Space below label */
+}
+
+/* Style for the instruction textarea to match the wireframe size */
+.fdx-text-area {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Style for checkboxes to align horizontally */
+.fdx-options-group {
+  display: flex;
+  gap: 25px;
+  margin-top: 15px;
+}

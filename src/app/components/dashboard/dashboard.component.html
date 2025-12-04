@@ -1,0 +1,115 @@
+<div class="fdx-quote-page-container">
+  
+  <div class="fdx-main-form-content">
+    
+    <div class="fdx-header">
+      <h1 class="fdx-title">Parts</h1>
+    </div>
+
+    <app-accordion>
+      <app-accordion-item 
+        *ngFor="let part of parts; let i = index; trackBy: trackByPartId"
+        [title]="'Part ' + (i + 1)"
+        [open]="part.isOpen"                             
+        (toggleEvent)="part.isOpen = !part.isOpen"      
+      >
+        <div class="panel-content fdx-text-body">
+          
+          <div class="fdx-radio-group">
+            <label class="fdx-radio-label">
+              <input type="radio" [(ngModel)]="part.type" value="Engine" name="partType-{{part.id}}"> Engine
+            </label>
+            <label class="fdx-radio-label">
+              <input type="radio" [(ngModel)]="part.type" value="Stand" name="partType-{{part.id}}"> Stand
+            </label>
+            <label class="fdx-radio-label">
+              <input type="radio" [(ngModel)]="part.type" value="Helicopter" name="partType-{{part.id}}"> Helicopter
+            </label>
+            <label class="fdx-radio-label">
+              <input type="radio" [(ngModel)]="part.type" value="Other" name="partType-{{part.id}}"> Other
+            </label>
+            </div>
+
+          <div class="fdx-form-row">
+            <div class="fdx-form-group fdx-w-full">
+              <label class="fdx-label">Engine model*</label>
+               <select class="fdx-dropdown" [(ngModel)]="part.engineModel" name="engineModel-{{part.id}}">
+                <option value="">Select...</option>
+              </select>
+              <!-- <input class="fdx-input-field" [(ngModel)]="part.engineModel" name="engineModel-{{part.id}}"> -->
+            </div>
+          </div>
+          
+          <div class="fdx-form-row fdx-three-col">
+            <div class="fdx-form-group">
+              <label class="fdx-label">Stand type*</label>
+              <select class="fdx-dropdown" [(ngModel)]="part.standType" name="standType-{{part.id}}">
+                <option value="">Select...</option>
+              </select>
+            </div>
+            <div class="fdx-form-group">
+              <label class="fdx-label">Actual weight*</label>
+              <input type="number" class="fdx-input-field" [(ngModel)]="part.actualWeight" name="actualWeight-{{part.id}}">
+            </div>
+            <div class="fdx-form-group">
+              <label class="fdx-label">Dimensions L x W x H*</label>
+              <input type="text" class="fdx-input-field" [(ngModel)]="part.dimensions" name="dimensions-{{part.id}}">
+            </div>
+          </div>
+          
+          <div class="fdx-form-group">
+            <label class="fdx-label">Instruction</label>
+            <textarea class="fdx-text-area" [(ngModel)]="part.instruction" name="instruction-{{part.id}}"></textarea>
+          </div>
+
+          <label class="fdx-label mt-4">Options</label>
+          <div class="fdx-options-group">
+            <label class="fdx-checkbox-label">
+              <input type="checkbox" [(ngModel)]="part.insurance" name="insurance-{{part.id}}"> Insurance
+            </label>
+            <label class="fdx-checkbox-label">
+              <input type="checkbox" [(ngModel)]="part.trackingDevice" name="trackingDevice-{{part.id}}"> Tracking device
+            </label>
+            <label class="fdx-checkbox-label">
+              <input type="checkbox" [(ngModel)]="part.additionalcover" name="additionalcover-{{part.id}}"> Additional cover required
+            </label>
+            <label class="fdx-checkbox-label">
+              <input type="checkbox" [(ngModel)]="part.purgeCertificate" name="purge-{{part.id}}"> Purge certificate
+            </label>
+            </div>
+          
+          <p class="mt-4">
+            <button 
+              *ngIf="parts.length > 1" 
+              (click)="removePart(part.id)" 
+              class="fdx-button-danger fdx-button-small"
+            >
+              Remove Part {{ i + 1 }}
+            </button>
+          </p>
+        </div>
+      </app-accordion-item>
+    </app-accordion>
+    
+    <div class="fdx-add-part-container">
+      <button (click)="addPart()" class="fdx-link-button fdx-add-part">
+        + ADD ANOTHER PART
+      </button>
+    </div>
+    
+    <div class="fdx-submit-container mt-5">
+      <button (click)="submitQuote()" class="fdx-button-primary fdx-button-lg">
+        CREATE QUOTE REQUEST
+      </button>
+    </div>
+  </div>
+  
+  <div class="fdx-sidebar">
+    <div class="fdx-status-card">
+      <p class="fdx-status-item fdx-complete">Customer</p>
+      <p class="fdx-status-item fdx-complete">Supplier</p>
+      <p class="fdx-status-item fdx-complete">Consignee</p>
+      <p class="fdx-status-item fdx-active">Parts</p>
+    </div>
+  </div>
+</div>
