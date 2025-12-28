@@ -17,7 +17,7 @@ function isBrowser(): boolean {
 @Injectable({ providedIn: 'root' })
 export class AnalysisService {
   private GEMINI_API_URL =
-    'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyD8DO5nrlcSttqbx3Jjc3oHEnPKJQqoUbQ';
+    'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=AIzaSyAg0HoiyqmY3ceq7_8J5WjsGvFz9Q7ovL0';
   private diaryKey = 'psyTalkDiary';
 
   constructor(private http: HttpClient) {}
